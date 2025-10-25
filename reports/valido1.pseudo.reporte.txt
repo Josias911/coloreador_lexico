@@ -1,0 +1,4 @@
+Archivo: C:/Users/Josia/OneDrive/Documentos/Proyectos/coloreador_lexico/tests/valido1.pseudo
+Fecha: 2025-10-24 18:41:44
+Estado: OK
+Tokens procesados: 22

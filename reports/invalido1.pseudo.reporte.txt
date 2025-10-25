@@ -1,0 +1,8 @@
+Archivo: C:/Users/Josia/OneDrive/Documentos/Proyectos/coloreador_lexico/tests/invalido1.pseudo
+Fecha: 2025-10-24 18:42:13
+Estado: ERROR
+Línea: 2, Columna: 10
+Mensaje: Símbolo no reconocido: '$'
+
+Escribir $$$  // símbolo no válido
+         ^

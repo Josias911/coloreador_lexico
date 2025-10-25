@@ -1,0 +1,8 @@
+Algoritmo Suma
+Definir a Como Entero
+Definir b Como Entero
+Leer a
+Leer b
+// Sumamos
+Escribir "Resultado: ", a + b
+FinAlgoritmo

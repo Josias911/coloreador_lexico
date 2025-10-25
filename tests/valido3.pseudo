@@ -1,0 +1,9 @@
+Algoritmo Condicional
+Definir x Como Entero
+Leer x
+Si x >= 10 Entonces
+    Escribir "Mayor o igual a 10"
+Sino
+    Escribir "Menor a 10"
+FinSi
+FinAlgoritmo
