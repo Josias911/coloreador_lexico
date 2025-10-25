@@ -97,3 +97,61 @@ class Lexer:
                 self._advance(block)
                 yield tok
                 continue
+
+# strings
+            m = self._match(self.string_re)
+            if m:
+                val = m.group(0)
+                tok = Token("STRING", val, self.line, self.col)
+                self._advance(val)
+                yield tok
+                continue
+
+            # numbers / booleans / nil
+            m = self._match(self.number_re)
+            if m:
+                val = m.group(0)
+                tok = Token("NUMBER", val, self.line, self.col)
+                self._advance(val)
+                yield tok
+                continue
+
+            # grouping
+            m = self._match(self.group_re)
+            if m:
+                val = m.group(0)
+                tok = Token("GROUP", val, self.line, self.col)
+                self._advance(val)
+                yield tok
+                continue
+
+            # operators
+            m = self._match(self.op_re)
+            if m:
+                val = m.group(0)
+                tok = Token("OP", val, self.line, self.col)
+                self._advance(val)
+                yield tok
+                continue
+
+            # identifiers / keywords
+            m = self._match(self.ident_re)
+            if m:
+                val = m.group(0)
+                ttype = "KEYWORD" if val in self.keywords else "IDENT"
+                # Special-case boolean/nil as numbers group color per spec
+                if val.lower() in ("true","false","verdadero","falso"):
+                    ttype = "BOOLEAN"
+                if val.lower() in ("nil","nulo"):
+                    ttype = "NIL"
+                tok = Token(ttype, val, self.line, self.col)
+                self._advance(val)
+                yield tok
+                continue
+
+            # Unknown char -> error
+            bad = self.code[self.pos]
+            raise LexError(f"Símbolo no reconocido: {bad!r}", self.line, self.col)
+
+        yield Token("EOF", "", self.line, self.col)
+
